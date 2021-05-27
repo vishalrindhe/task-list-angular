@@ -1,2 +1,58 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-4">
+      <app-form (newItemEvent)="addItem($event)" [i]="currentData"></app-form>
+    </div>
 
+    <div class="col-8 card pt-3">
+      <div class="row">
+        <div class="col ">
+          <h4>&nbsp;&nbsp; User List</h4>
+        </div>
+
+    <div class="col  pb-4" style="display: inline-block;">
+          <span>Search By Name  </span>
+            
+            <input class="" type="text" value="text" [(ngModel)]="search" />
+        </div>
+      </div>
+      <table class="container table  table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">About me</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody
+          *ngFor="let info of dataArray | filter: search:'name'; let i = index"
+        >
+          <tr class="hover">
+            <td>{{ i }}</td>
+            <td>{{ info.name }}</td>
+            <td>{{ info.gender }}</td>
+            <td>{{ info.email }}</td>
+            <td>{{ info.mobile }}</td>
+            <td>{{ info.about }}</td>
+            <td class="center">
+              <button class="btn btn-outline-danger" (click)="deletedata(i)">
+                Delete
+              </button>
+              &nbsp;
+              <button class="btn btn-outline-warning" (click)="editData(i)">
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- {{dataArray}} -->
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>

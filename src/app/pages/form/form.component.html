@@ -1,1 +1,134 @@
-<p>form works!</p>
+<div class="card">
+  <div class="container">
+    <div class="row pt-3">
+      <div class="col center">
+        <h4>Add/Update</h4>
+      </div>
+    </div>
+
+    <form [formGroup]="userForm" >
+      <div class="row">
+        <div class="col">
+          <h5>Name *</h5>
+          <input
+            type="text"
+            class="form-control"
+            required
+            #name
+            value="{{ item?.name }}"
+            formControlName="name"
+          />
+          <div class="error" *ngIf="userForm.get('name')?.touched && userForm.get('name')?.hasError('required')">
+            <small> &emsp; Name required</small>
+          <br>
+        </div>
+        
+        <div class="error" *ngIf="userForm.get('name')?.touched && userForm.get('name')?.hasError('minlength')">
+          <small> &emsp; Minimum 4 Characters required</small>
+        <br>
+      </div>
+          <br />
+
+          <h5>Gender *</h5>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              value="male"
+              formControlName="gender"
+              [checked]="true"
+            />
+            Male
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              value="female"
+              formControlName="gender"
+            />
+            Female
+          </div>
+
+          <div class="error" *ngIf="userForm.get('gender')?.touched && userForm.get('gender')?.hasError('required')">
+            <small> &emsp; Gender required</small>
+          <br>
+        </div>
+
+          <!-- <p>g: {{ item?.gender }}</p> -->
+          <br />
+
+          <h5>Email *</h5>
+          <input
+            type="text"
+            class="form-control"
+            #email
+            value="{{ item?.email }}"
+            formControlName="email"
+          />
+          <div class="error" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.hasError('required')">
+            <small> &emsp; email required</small>
+          <br>
+        </div>  <div class="error" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.hasError('pattern')">
+          <small> &emsp; This is not email</small>
+        <br>
+      </div>
+          <br />
+
+          <h5>Mobile *</h5>
+          <input
+            type="text"
+            class="form-control"
+            #mobile
+            value="{{ item?.mobile }}"
+            formControlName="mobile"
+          />
+          <div class="error" *ngIf="userForm.get('mobile')?.touched && userForm.get('mobile')?.hasError('required')">
+            <small> &emsp; Mobile number required</small>
+          <br>
+        </div>  <div class="error" *ngIf="userForm.get('mobile')?.touched && userForm.get('mobile')?.hasError('pattern')">
+          <small> &emsp; Please enter indian numbers</small>
+        <br>
+      </div>
+          <br />
+
+          <h5>About Me *</h5>
+          <textarea
+            type="text"
+            class="form-control"
+            #about
+            value="{{ item?.about }}"
+            formControlName="about"
+          ></textarea>
+
+          <div class="error" *ngIf="userForm.get('about')?.touched && userForm.get('about')?.hasError('required')">
+            <small> &emsp; Name required</small>
+          <br>
+        </div>
+
+        <div class="error" *ngIf="userForm.get('about')?.touched && userForm.get('about')?.hasError('maxlength')">
+          <small> &emsp; Name required</small>
+        <br>
+      </div>
+          <br />
+        </div>
+
+        <div class="row center pb-3">
+          <div class="col-6">
+            <button
+              class="btn btn-secondary"
+              (click)="addNewItem()"
+              [disabled]="userForm.invalid"
+            >
+              Save
+            </button>
+          </div>
+
+          <div class="col-6">
+            <button class="btn btn-secondary" (click)="reset()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
