@@ -6,9 +6,10 @@
       </div>
     </div>
 
-    <form [formGroup]="userForm" >
+    <form [formGroup]="userForm">
       <div class="row">
         <div class="col">
+          <!-- name input -->
           <h5>Name *</h5>
           <input
             type="text"
@@ -18,17 +19,30 @@
             value="{{ item?.name }}"
             formControlName="name"
           />
-          <div class="error" *ngIf="userForm.get('name')?.touched && userForm.get('name')?.hasError('required')">
+          <!-- validation for name input -->
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('name')?.touched &&
+              userForm.get('name')?.hasError('required')
+            "
+          >
             <small> &emsp; Name required</small>
-          <br>
-        </div>
-        
-        <div class="error" *ngIf="userForm.get('name')?.touched && userForm.get('name')?.hasError('minlength')">
-          <small> &emsp; Minimum 4 Characters required</small>
-        <br>
-      </div>
-          <br />
+            <br />
+          </div>
 
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('name')?.touched &&
+              userForm.get('name')?.hasError('pattern')
+            "
+          >
+            <small> &emsp; Name field accepts only alphbets of 4 to 8 length</small>
+            <br />
+          </div>
+          <br />
+          <!-- gender radio buttons -->
           <h5>Gender *</h5>
           <div class="form-check">
             <input
@@ -49,15 +63,20 @@
             />
             Female
           </div>
-
-          <div class="error" *ngIf="userForm.get('gender')?.touched && userForm.get('gender')?.hasError('required')">
+          <!-- validation for gender radio buttons -->
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('gender')?.touched &&
+              userForm.get('gender')?.hasError('required')
+            "
+          >
             <small> &emsp; Gender required</small>
-          <br>
-        </div>
+            <br />
+          </div>
 
-          <!-- <p>g: {{ item?.gender }}</p> -->
           <br />
-
+          <!-- email input -->
           <h5>Email *</h5>
           <input
             type="text"
@@ -66,15 +85,30 @@
             value="{{ item?.email }}"
             formControlName="email"
           />
-          <div class="error" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.hasError('required')">
+          <!-- validation for email input -->
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('email')?.touched &&
+              userForm.get('email')?.hasError('required')
+            "
+          >
             <small> &emsp; email required</small>
-          <br>
-        </div>  <div class="error" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.hasError('pattern')">
-          <small> &emsp; This is not email</small>
-        <br>
-      </div>
+            <br />
+          </div>
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('email')?.touched &&
+              userForm.get('email')?.hasError('pattern')
+            "
+          >
+            <small> &emsp; This is not email</small>
+            <br />
+          </div>
           <br />
 
+          <!-- mobile input -->
           <h5>Mobile *</h5>
           <input
             type="text"
@@ -83,15 +117,29 @@
             value="{{ item?.mobile }}"
             formControlName="mobile"
           />
-          <div class="error" *ngIf="userForm.get('mobile')?.touched && userForm.get('mobile')?.hasError('required')">
+          <!-- validation for mobile input -->
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('mobile')?.touched &&
+              userForm.get('mobile')?.hasError('required')
+            "
+          >
             <small> &emsp; Mobile number required</small>
-          <br>
-        </div>  <div class="error" *ngIf="userForm.get('mobile')?.touched && userForm.get('mobile')?.hasError('pattern')">
-          <small> &emsp; Please enter indian numbers</small>
-        <br>
-      </div>
+            <br />
+          </div>
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('mobile')?.touched &&
+              userForm.get('mobile')?.hasError('pattern')
+            "
+          >
+            <small> &emsp; Please enter indian numbers</small>
+            <br />
+          </div>
           <br />
-
+          <!-- textarea input for about me -->
           <h5>About Me *</h5>
           <textarea
             type="text"
@@ -100,31 +148,45 @@
             value="{{ item?.about }}"
             formControlName="about"
           ></textarea>
-
-          <div class="error" *ngIf="userForm.get('about')?.touched && userForm.get('about')?.hasError('required')">
+          <!-- validation for about me -->
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('about')?.touched &&
+              userForm.get('about')?.hasError('required')
+            "
+          >
             <small> &emsp; Name required</small>
-          <br>
-        </div>
+            <br />
+          </div>
 
-        <div class="error" *ngIf="userForm.get('about')?.touched && userForm.get('about')?.hasError('maxlength')">
-          <small> &emsp; Name required</small>
-        <br>
-      </div>
+          <div
+            class="error"
+            *ngIf="
+              userForm.get('about')?.touched &&
+              userForm.get('about')?.hasError('maxlength')
+            "
+          >
+            <small> &emsp; Name required</small>
+            <br />
+          </div>
           <br />
         </div>
-
+        <!-- button to save and update form details -->
         <div class="row center pb-3">
           <div class="col-6">
             <button
               class="btn btn-secondary"
               (click)="addNewItem()"
-              [disabled]="userForm.invalid"
+            [disabled]="userForm.invalid"
+              
             >
               Save
             </button>
           </div>
 
           <div class="col-6">
+            <!-- reset button -->
             <button class="btn btn-secondary" (click)="reset()">Reset</button>
           </div>
         </div>

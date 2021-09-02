@@ -1,22 +1,30 @@
-<div class="container">
+<div class="mx-4">
   <div class="row mt-4">
-    <div class="col-4">
+    <div class="col-12 col-md-3 col-lg-3">
+      <!-- form for Add/ Update -->
       <app-form (newItemEvent)="addItem($event)" [i]="currentData"></app-form>
     </div>
 
-    <div class="col-8 card pt-3">
-      <div class="row">
-        <div class="col ">
+    <div class="col-12 col-md-9 col-lg-9 card pt-3">
+      <div class="row pb-4">
+        <div class="col-6">
           <h4>&nbsp;&nbsp; User List</h4>
         </div>
 
-    <div class="col  pb-4" style="display: inline-block;">
-          <span>Search By Name  </span>
-            
-            <input class="" type="text" value="text" [(ngModel)]="search" />
+        <div class="col-2" style="display: inline-block">
+          <p>&nbsp;&nbsp; &nbsp;&nbsp; Search By Name</p>
+        </div>
+        <div class="col-4">
+          <input
+            class="form-control"
+            type="text"
+            value="text"
+            [(ngModel)]="search"
+          />
         </div>
       </div>
-      <table class="container table  table-bordered table-hover">
+      <!-- table for listout entries -->
+      <table class="container table table-bordered table-hover">
         <thead class="table-light">
           <tr>
             <th scope="col">No</th>
@@ -28,21 +36,24 @@
             <th scope="col">Action</th>
           </tr>
         </thead>
+        <!-- dataArray to display in table can use "filter" pipe for filter out entries according to name  -->
         <tbody
           *ngFor="let info of dataArray | filter: search:'name'; let i = index"
         >
           <tr class="hover">
-            <td>{{ i }}</td>
+            <td>{{ i + 1 }}</td>
             <td>{{ info.name }}</td>
             <td>{{ info.gender }}</td>
             <td>{{ info.email }}</td>
             <td>{{ info.mobile }}</td>
             <td>{{ info.about }}</td>
             <td class="center">
+              <!-- button to delete entry -->
               <button class="btn btn-outline-danger" (click)="deletedata(i)">
                 Delete
               </button>
               &nbsp;
+              <!-- button to edit entry details -->
               <button class="btn btn-outline-warning" (click)="editData(i)">
                 Edit
               </button>
@@ -50,8 +61,6 @@
           </tr>
         </tbody>
       </table>
-
-      <!-- {{dataArray}} -->
     </div>
   </div>
 </div>

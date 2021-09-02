@@ -7,31 +7,31 @@ export class DataService {
   dataArray: any = [
     {
       about: 'hjhj',
-      email: 'h',
+      email: 'abc0@ac.co',
       gender: 'female',
-      mobile: 'hj',
-      name: 'abc'
+      mobile: '9876543210',
+      name: 'abca'
     },
     {
       about: 'hjhj',
-      email: 'h',
+      email: 'abc1@ac.co',
       gender: 'male',
-      mobile: 'hj',
-      name: 'abc'
+      mobile: '9876543211',
+      name: 'abcd'
     },
     {
       about: 'hjhj',
-      email: 'h',
+      email: 'abc2@ac.co',
       gender: 'female',
-      mobile: 'hj',
-      name: 'xyz'
+      mobile: '9876543212',
+      name: 'xydz'
     },
     {
       about: 'hjhj',
-      email: 'hghghghghhjhjhj',
+      email: 'abc3@ac.co',
       gender: 'female',
-      mobile: 'hj',
-      name: 'abc'
+      mobile: '9876543213',
+      name: 'abdc'
     },
   ];
   i!: number;

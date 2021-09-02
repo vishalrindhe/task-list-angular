@@ -10,11 +10,16 @@ export class FilterPipe implements PipeTransform {
       return value;
     }
 
+    filterString = filterString.toLocaleLowerCase();
     for (const item of value) {
-      if (item[propName] === filterString) {
+      if (item[propName].toLocaleLowerCase().includes(filterString)) {
         resultArray.push(item);
       }
     }
+
+    // return items.filter(it => {
+    //   return it.toLocaleLowerCase().includes(searchText);
+    // }
 
     return resultArray;
   }
